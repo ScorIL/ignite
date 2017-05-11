@@ -19,7 +19,7 @@ module.exports = (plugin, command, context) => {
     const directory = opts.directory
 
     // read some configuration
-    const askToOverwrite = config.askToOverwrite || false
+    const askToOverwrite = context.parameters.options.force ? false : (config.askToOverwrite || false)
 
     // If the file exists
     const shouldGenerate = async target => {
